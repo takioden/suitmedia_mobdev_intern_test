@@ -4,8 +4,13 @@ import '../models/user_model.dart';
 
 class ApiService {
   static Future<List<UserModel>> fetchUsers(int page) async {
-    final response = await http.get(Uri.parse('https://reqres.in/api/users?page=$page'));
-    
+    final response = await http.get(
+      Uri.parse('https://reqres.in/api/users?page=$page'),
+      headers: {
+        'x-api-key': 'reqres-free-v1',
+      },
+    );
+
     if (response.statusCode == 200) {
       final List data = json.decode(response.body)['data'];
       return data.map((json) => UserModel.fromJson(json)).toList();
