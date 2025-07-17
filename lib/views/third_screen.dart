@@ -73,7 +73,13 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 },
                 child: ListView.separated(
                   itemCount: viewModel.users.length + (viewModel.hasMore ? 1 : 0),
-                  separatorBuilder: (_, __) => const Divider(),
+                  separatorBuilder: (_, __) => const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Divider(
+                      thickness: 1,
+                      color: Color(0xFFE2E3E4),
+                    ),
+                  ),
                   itemBuilder: (context, index) {
                     if (index == viewModel.users.length) {
                       return const Center(
